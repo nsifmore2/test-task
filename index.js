@@ -3,6 +3,7 @@ var MyForm = (function() {
         fioRegexp: /^[А-ЯЁ][а-яё]* [А-ЯЁ][а-яё]* [А-ЯЁ][а-яё]*$/,
 
         emailRegexp: /^[a-zA-Z]+(([a-zA-Z0-9]*-?([a-zA-Z0-9]+\.[a-zA-Z0-9])?[a-zA-Z0-9]*)|([a-zA-Z0-9]*\.?([a-zA-Z0-9]+-[a-zA-Z0-9])?[a-zA-Z0-9]*))(@ya.ru|@yandex.ru|@yandex.by|@yandex.ua|@yandex.kz|@yandex.com)$/,
+        emailMaxLimit: 30,
 
         phoneRegexp: /^\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}$/,
         phoneSumLimit: 30,
@@ -28,6 +29,10 @@ var MyForm = (function() {
         }
 
         var isEmailValid = validationSet.emailRegexp.test(data.email);
+        if (isEmailValid) {
+            var login = data.email.substring(0, data.email.indexOf("@"));
+            isEmailValid = login.length < validationSet.emailMaxLimit;
+        }
         if (!isEmailValid) {
             errorFields.push("email");
         }
@@ -198,5 +203,9 @@ var MyForm = (function() {
             var selectedDomain = $(this).text();
             $("#currentDomain").html(selectedDomain + " <span class=\"caret\"></span>");
         });
+    });
+
+    var tooltipInit = $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
     });
 })();
