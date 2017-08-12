@@ -2,7 +2,7 @@ var MyForm = (function() {
     var validationSet = {
         fioRegexp: /^[А-ЯЁ][а-яё]* [А-ЯЁ][а-яё]* [А-ЯЁ][а-яё]*$/,
 
-        emailRegexp: /^[a-zA-Z]+(([a-zA-Z0-9]*-?([a-zA-Z0-9].[a-zA-Z0-9])?[a-zA-Z0-9]*)|([a-zA-Z0-9]*.?([a-zA-Z0-9].[a-zA-Z0-9])?[a-zA-Z0-9]*))(@ya.ru|@yandex.ru|@yandex.by|@yandex.ua|@yandex.kz|@yandex.com)$/,
+        emailRegexp: /^[a-zA-Z]+(([a-zA-Z0-9]*-?([a-zA-Z0-9]+\.[a-zA-Z0-9])?[a-zA-Z0-9]*)|([a-zA-Z0-9]*\.?([a-zA-Z0-9]+-[a-zA-Z0-9])?[a-zA-Z0-9]*))(@ya.ru|@yandex.ru|@yandex.by|@yandex.ua|@yandex.kz|@yandex.com)$/,
 
         phoneRegexp: /^\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}$/,
         phoneSumLimit: 30,
