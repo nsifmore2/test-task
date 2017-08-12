@@ -14,12 +14,12 @@
     <body>
 
         <div class="container">
-            <form id="MyForm" action="json/success.json" class="panel panel-default">
+            <form id="MyForm" action="json/error.json" class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Пожалуйста, введите данные</h3>
                 </div>
 
-                <div class="panel-body">
+                <div class="panel-body panel-body-center">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-user"></span>
@@ -33,14 +33,14 @@
                         </span>
                         <input name="email" type="text" class="form-control" placeholder="Логин">
                         <div class="input-group-btn">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">@ya.ru <span class="caret"></span></button>
+                            <button id="currentDomain" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">@ya.ru <span class="caret"></span></button>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="#">@ya.ru</a></li>
-                                <li><a href="#">@yandex.ru</a></li>
-                                <li><a href="#">@yandex.ua</a></li>
-                                <li><a href="#">@yandex.by</a></li>
-                                <li><a href="#">@yandex.kz</a></li>
-                                <li><a href="#">@yandex.com</a></li>
+                                <li><a>@ya.ru</a></li>
+                                <li><a>@yandex.ru</a></li>
+                                <li><a>@yandex.ua</a></li>
+                                <li><a>@yandex.by</a></li>
+                                <li><a>@yandex.kz</a></li>
+                                <li><a>@yandex.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -56,9 +56,7 @@
                 </div>
             </form>
 
-            <div id="resultContainer" class="jumbotron" hidden>
-                <h4>Результат:</h4>
-            </div>
+            <div id="resultContainer" class="panel-output"></div>
         </div>
 
         <div class="footer">
@@ -66,11 +64,11 @@
             <p class="footer-text footer-lower-text">nsifmore2@yandex.ru</p>
         </div>
 
-        <!-- Client Logic -->
-        <script src="index.js"></script>
         <!-- External Frameworks -->
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <!-- Client Logic -->
+        <script src="index.js"></script>
 
     </body>
 </html>

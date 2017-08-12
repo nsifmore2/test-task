@@ -10,12 +10,19 @@
     margin-top: 10px;
 }
 
-.panel-body {
+.panel-body-center {
     text-align: center;
 }
 
 .input-group {
     margin: 5px;
+}
+
+.panel-output {
+    text-align: center;
+    padding-top: 15px;
+    min-height: 50px;
+    border-radius: 4px;
 }
 
 .footer {
@@ -41,5 +48,16 @@
 }
 
 .error {
-    border: 1px solid red
+    border: 1px solid red;
+    background-color: #f5c8c8;
+}
+
+.success {
+    border: 1px solid #47de34;
+    background-color: #c8ffc1;
+}
+
+.progress {
+    border: 1px solid #0042de;
+    background-color: #c1d5ff !important; /* redefine bootstrap .progress */
 }
