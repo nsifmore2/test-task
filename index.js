@@ -112,6 +112,7 @@ var MyForm = (function() {
         validationResultProcessing(validationResult.errorFields);
 
         if (validationResult.isValid) {
+            $("#submitButton").prop("disabled", true);
             request();
         }
     };
