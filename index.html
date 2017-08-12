@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Школа Node.js 2017 - Тестовое Задание</title>
+
+        <link href="css/style.css" rel="stylesheet">
+        <!-- External Frameworks -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <form id="MyForm" action="json/success.json" class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Пожалуйста, введите данные</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input name="fio" type="text" class="form-control" placeholder="Фамилия Имя Отчество">
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </span>
+                        <input name="email" type="text" class="form-control" placeholder="Логин">
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">@ya.ru <span class="caret"></span></button>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a href="#">@ya.ru</a></li>
+                                <li><a href="#">@yandex.ru</a></li>
+                                <li><a href="#">@yandex.ua</a></li>
+                                <li><a href="#">@yandex.by</a></li>
+                                <li><a href="#">@yandex.kz</a></li>
+                                <li><a href="#">@yandex.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-earphone"></span>
+                        </span>
+                        <input name="phone" type="text" class="form-control" placeholder="+7(xxx)xxx-xx-xx">
+                    </div>
+
+                    <button id="submitButton" type="button" class="btn btn-primary">Подтвердить</button>
+                </div>
+            </form>
+
+            <div id="resultContainer" class="jumbotron" hidden>
+                <h4>Результат:</h4>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="footer-text footer-upper-text">Школа Node.JS 2017</p>
+            <p class="footer-text footer-lower-text">nsifmore2@yandex.ru</p>
+        </div>
+
+        <!-- Client Logic -->
+        <script src="index.js"></script>
+        <!-- External Frameworks -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,45 @@
+#MyForm {
+    width: 450px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#submitButton {
+    width: 150px;
+    margin-top: 10px;
+}
+
+.panel-body {
+    text-align: center;
+}
+
+.input-group {
+    margin: 5px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #000000;
+}
+
+.footer-text {
+    text-align: center;
+    margin: 5px;
+    color: #c0c0c0;
+}
+
+.footer-upper-text {
+    font-size: 15px;
+}
+
+.footer-lower-text {
+    font-size: 12px;
+}
+
+.error {
+    border: 1px solid red
+}
