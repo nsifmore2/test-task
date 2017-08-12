@@ -1,4 +1,14 @@
 var MyForm = (function() {
+    var validationSet = {
+        fioRegexp: /^[А-ЯЁ][а-яё]* [А-ЯЁ][а-яё]* [А-ЯЁ][а-яё]*$/,
+
+        emailRegexp: /^[a-zA-Z]+(([a-zA-Z0-9]*-?([a-zA-Z0-9].[a-zA-Z0-9])?[a-zA-Z0-9]*)|([a-zA-Z0-9]*.?([a-zA-Z0-9].[a-zA-Z0-9])?[a-zA-Z0-9]*))(@ya.ru|@yandex.ru|@yandex.by|@yandex.ua|@yandex.kz|@yandex.com)$/,
+
+        phoneRegexp: /^\+7\([0-9]{3}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}$/,
+        phoneSumLimit: 30,
+
+        inputList: ["fio", "email", "phone"]
+    };
 
     /**
      * Валидация пользовательского ввода
@@ -9,9 +19,36 @@ var MyForm = (function() {
      * }}
      */
     var validate = function() {
+        var data = getData();
+        var errorFields = [];
+
+        var isFioValid = validationSet.fioRegexp.test(data.fio);
+        if (!isFioValid) {
+            errorFields.push("fio");
+        }
+
+        var isEmailValid = validationSet.emailRegexp.test(data.email);
+        if (!isEmailValid) {
+            errorFields.push("email");
+        }
+
+        var isPhoneValid = validationSet.phoneRegexp.test(data.phone);
+        if (isPhoneValid) {
+            var strNumbers = data.phone.replace(/\D+/g, "");
+            var numbers = strNumbers.split("");
+            var sum = numbers.reduce(function (prev, curr) {
+                return prev + Number(curr);
+            }, 0);
+
+            isPhoneValid = sum <= validationSet.phoneSumLimit;
+        }
+        if (!isPhoneValid) {
+            errorFields.push("phone");
+        }
+
         return {
-            isValid: true,
-            errorFields: []
+            isValid: (errorFields.length === 0),
+            errorFields: errorFields
         }
     };
 
@@ -26,7 +63,7 @@ var MyForm = (function() {
      */
     var getData = function() {
         var fio = $("[name='fio']").val();
-        var email = $("[name='email']").val();
+        var email = $("[name='email']").val() + $("#currentDomain").text().slice(0, -1);
         var phone = $("[name='phone']").val();
 
         return {
@@ -67,15 +104,29 @@ var MyForm = (function() {
     var submit = function () {
         var validationResult = validate();
 
+        validationResultProcessing(validationResult.errorFields);
+
         if (validationResult.isValid) {
             request();
-        } else {
-
         }
     };
 
-    var progressIntervalId = null;
+    /**
+     * Индикация полей ввода после валидации
+     *
+     * @param errorFields - лист невалидных полей ввода
+     */
+    var validationResultProcessing = function (errorFields) {
+        validationSet.inputList.forEach(function (item) {
+            if (errorFields.indexOf(item) === -1) {
+                $("[name=" + item + "]").removeClass("error");
+            } else {
+                $("[name=" + item + "]").addClass("error");
+            }
+        });
+    };
 
+    var progressIntervalId = null;
     /**
      * Выполнение запроса
      */
@@ -89,7 +140,7 @@ var MyForm = (function() {
 
         $.ajax({
             url: url,
-            success: function(data, textStatus){
+            success: function(data){
                 var status = data.status;
                 var elementId = "#resultContainer";
 
